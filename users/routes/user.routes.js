@@ -5,10 +5,10 @@ const usersController = require('../controllers/user.controller');
 
 exports.userRoutes = function(app){
     
-    app.post('/api/register-user',usersController.registerUser);
+    app.post('',usersController);
     
-    app.post('/api/login-user',usersController.loginUser);
+    app.post('',usersController);
 
-    app.put('/api/upload/user-pic',usersController.uploadUserPic);
+    app.put('',usersController);
 
 }
