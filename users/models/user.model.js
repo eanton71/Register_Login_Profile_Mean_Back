@@ -87,8 +87,7 @@ exports.updateUserPic = (userid,picname)=>{
             
             if (user) { 
                 //FIXME: añadida resolucion afirtmativa de consulta de modificacion
-                console.log("ruta nueva: ", user);
-                resolve(user);
+                 resolve(user);
             }else{
                 resolve(undefined);
             }

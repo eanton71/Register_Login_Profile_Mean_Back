@@ -48,7 +48,7 @@ exports.loginUser = (request,response)=>{
     console.log('received:',request.body);
     //FIXME: añadido usersModel.loginUser
     usersModel.loginUser(request.body).then((user,error)=>{
-        console.log(user, "XXX")
+     
         if(error){
             throw error.message;
         }

@@ -68,10 +68,8 @@ exports.updateImageUserFile = async(id,nfile)=>{
                    }); */
         
         if(fs.existsSync(direxist)){
-            console.log("direxist: ", direxist);
-            nfile.mv(dirput, (error) => {
-                console.log("dirput: ", dirput);
-                if (error) { 
+             nfile.mv(dirput, (error) => {
+                 if (error) { 
                     throw error.message;
                 }
                 console.log('file saved');
