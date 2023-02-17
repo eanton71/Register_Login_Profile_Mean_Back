@@ -31,8 +31,8 @@ const Users = mongoose.model('users',usersSchema,'users');
 exports.loginUser = (info)=>{
 
     return new Promise((resolve,reject)=>{
-
-        Users.({$or:[{email:info.eou},{username:info.eou}],password:info.password},{password:0}).exec((error,result)=>{
+        //FIXME: añadido findOne
+        Users.findOne({$or:[{email:info.eou},{username:info.eou}],password:info.password},{password:0}).exec((error,result)=>{
             
             if(error){
                 reject(error.message);
@@ -40,8 +40,9 @@ exports.loginUser = (info)=>{
                 
             }
             
-            if(result){
-                
+            if (result) {
+                //FIXME: añadida respuesta de la consulta en caso afirmativo
+                resolve(result);
                 console.log(result);
                 
             }else{
@@ -62,8 +63,8 @@ exports.registerUser = (user)=>{
     try{
 
         const usr = new Users(user);
-
-        
+        //FIXME: guardar usuario en base de datos
+        return usr.save().catch(error => error.message);
 
     }catch(error){
         throw error.message
@@ -75,17 +76,19 @@ exports.registerUser = (user)=>{
 exports.updateUserPic = (userid,picname)=>{
 
     return new Promise((resolve,reject)=>{
-
-        findOneAndUpdate({_id:},{$set:{user_image:}},{new:true}).exec((error,user)=>{
-            
-            if(error){
+        //FIXME: añadido Coleccion USers antes de la fucnion y parametros userid en   id: y picname en   user_image:
+        Users.findOneAndUpdate({ _id: userid }, {$set: { user_image: picname }},{new:true}).exec((error,user)=>{
+         
+            if (error) { 
                 reject(error.message);
                 throw error.message;
                 
             }
             
-            if(user){
-                
+            if (user) { 
+                //FIXME: añadida resolucion afirtmativa de consulta de modificacion
+                console.log("ruta nueva: ", user);
+                resolve(user);
             }else{
                 resolve(undefined);
             }
@@ -97,3 +100,4 @@ exports.updateUserPic = (userid,picname)=>{
        
     
 }
+ 

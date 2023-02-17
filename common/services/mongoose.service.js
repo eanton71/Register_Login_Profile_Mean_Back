@@ -11,7 +11,7 @@ const options = {
 const connectWithRetry = ()=>{
     console.log('Mongo connection with retry');
     mongoose.set('strictQuery',true);
-    mongoose.connect('',options)
+    mongoose.connect('mongodb://actiuhumaMongodb:rlpdatabase@127.0.0.1:27017/rlp',options)
     .then(()=>{
         console.log('Mongo is connected');
 
